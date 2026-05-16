@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Multiplicación <span>paso a paso</span> 🧠</h1>
+
+  <div class="inputs">
+    <div>
+      <label>Número arriba ⬆</label>
+      <input type="number" id="num1">
+    </div>
+
+    <div>
+      <label>Número abajo ⬇</label>
+      <input type="number" id="num2">
+    </div>
+
+    <button onclick="calcular()">Multiplicar</button>
+  </div>
+
+  <div class="resultados">
+
+    <div class="box resultado">
+      <h2>Resultado</h2>
+      <p id="resultado">0</p>
+      <p class="mensaje">¡Excelente trabajo! 🎉</p>
+    </div>
+
+    <div class="box procedimiento">
+      <h2>Procedimiento paso a paso</h2>
+      <pre id="pasos"></pre>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-box">
+    💻 Hecha por <span class="nombre">Stiven Prado</span> 💖
+    <p>Gracias por usar esta herramienta 🚀</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
