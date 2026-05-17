@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- 📱 RESPONSIVE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- 🎨 COLOR APP -->
   <meta name="theme-color" content="#020617">
 
   <title>Calculadora Pro</title>
@@ -19,35 +16,56 @@
 
 <div class="container">
 
-  <h1>Multiplicación <span>paso a paso</span> 🧠</h1>
+  <h1>Calculadora <span>Pro</span> 🧠</h1>
 
+  <!-- 🔢 ENTRADAS -->
   <div class="inputs">
+
     <div>
-      <label>Número arriba ⬆</label>
+      <label>Número 1</label>
       <input type="number" id="num1">
     </div>
 
     <div>
-      <label>Número abajo ⬇</label>
+      <label>Número 2</label>
       <input type="number" id="num2">
     </div>
 
-    <button onclick="calcular()">Multiplicar</button>
+    <div>
+      <label>Operación</label>
+      <select id="operacion">
+        <option value="sumar">➕ Suma</option>
+        <option value="restar">➖ Resta</option>
+        <option value="multiplicar">✖ Multiplicación</option>
+        <option value="dividir">➗ División</option>
+      </select>
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+    <button onclick="limpiar()">Limpiar</button>
+
   </div>
 
+  <!-- 📊 RESULTADOS -->
   <div class="resultados">
 
     <div class="box resultado">
       <h2>Resultado</h2>
       <p id="resultado">0</p>
-      <p class="mensaje">¡Excelente trabajo! 🎉</p>
+      <button onclick="copiar()">Copiar</button>
     </div>
 
     <div class="box procedimiento">
-      <h2>Procedimiento paso a paso</h2>
+      <h2>Procedimiento</h2>
       <pre id="pasos"></pre>
     </div>
 
+  </div>
+
+  <!-- 📜 HISTORIAL -->
+  <div class="box historial">
+    <h2>Historial</h2>
+    <ul id="historial"></ul>
   </div>
 
 </div>
@@ -55,13 +73,12 @@
 <footer>
   <div class="footer-box">
     💻 Hecha por <span class="nombre">Stiven Prado</span> 💖
-    <p>Gracias por usar esta herramienta 🚀</p>
+    <p>App matemática avanzada 🚀</p>
   </div>
 </footer>
 
 <script src="script.js"></script>
 
-<!-- 🔥 SERVICE WORKER -->
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');

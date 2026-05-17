@@ -186,3 +186,13 @@ pre {
     font-size: 14px;
   }
 }
+.historial ul {
+  list-style: none;
+  padding: 0;
+}
+
+.historial li {
+  padding: 5px;
+  border-bottom: 1px solid #444;
+  font-size: 14px;
+}

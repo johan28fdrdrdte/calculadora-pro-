@@ -1,18 +1,57 @@
 function calcular() {
-  let a = parseInt(document.getElementById("num1").value);
-  let b = parseInt(document.getElementById("num2").value);
+  let a = parseFloat(document.getElementById("num1").value);
+  let b = parseFloat(document.getElementById("num2").value);
+  let op = document.getElementById("operacion").value;
 
   if (isNaN(a) || isNaN(b)) {
     alert("Ingresa ambos números");
     return;
   }
 
-  let pasos = multiplicacionLarga(a, b);
+  let resultado = 0;
+  let pasos = "";
+  let simbolo = "";
 
-  document.getElementById("resultado").textContent = a * b;
+  switch(op) {
+
+    case "sumar":
+      resultado = a + b;
+      pasos = `${a} + ${b} = ${resultado}`;
+      simbolo = "+";
+      break;
+
+    case "restar":
+      resultado = a - b;
+      pasos = `${a} - ${b} = ${resultado}`;
+      simbolo = "-";
+      break;
+
+    case "multiplicar":
+      resultado = a * b;
+      pasos = multiplicacionLarga(a, b);
+      simbolo = "×";
+      break;
+
+    case "dividir":
+      if (b === 0) {
+        alert("No se puede dividir entre 0");
+        return;
+      }
+      resultado = a / b;
+      pasos = `${a} ÷ ${b} = ${resultado}`;
+      simbolo = "÷";
+      break;
+  }
+
+  // MOSTRAR RESULTADOS
+  document.getElementById("resultado").textContent = resultado;
   document.getElementById("pasos").textContent = pasos;
+
+  // GUARDAR HISTORIAL
+  agregarHistorial(`${a} ${simbolo} ${b} = ${resultado}`);
 }
 
+/* MULTIPLICACIÓN PASO A PASO */
 function multiplicacionLarga(a, b) {
   let num2 = b.toString().split("").reverse();
   let resultados = [];
@@ -24,7 +63,28 @@ function multiplicacionLarga(a, b) {
 
   let resultadoFinal = resultados.reduce((x, y) => x + parseInt(y), 0);
 
-  let pasos = resultados.join("\n") + "\n------\n" + resultadoFinal;
+  return resultados.join("\n") + "\n------\n" + resultadoFinal;
+}
 
-  return pasos;
+/* LIMPIAR */
+function limpiar() {
+  document.getElementById("num1").value = "";
+  document.getElementById("num2").value = "";
+  document.getElementById("resultado").textContent = "0";
+  document.getElementById("pasos").textContent = "";
+}
+
+/* COPIAR */
+function copiar() {
+  let resultado = document.getElementById("resultado").textContent;
+  navigator.clipboard.writeText(resultado);
+  alert("Resultado copiado 📋");
+}
+
+/* HISTORIAL */
+function agregarHistorial(texto) {
+  let lista = document.getElementById("historial");
+  let item = document.createElement("li");
+  item.textContent = texto;
+  lista.prepend(item);
 }
